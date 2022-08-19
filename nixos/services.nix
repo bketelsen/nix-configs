@@ -10,6 +10,9 @@
     guiAddress = "0.0.0.0:8384";
   };
 
+  services.tailscale = {
+    enable = true;
+  };
 
   #environment.systemPackages = with pkgs; [ vscode firefox gnome.gnome-tweaks ];
 

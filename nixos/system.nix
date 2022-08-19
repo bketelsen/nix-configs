@@ -20,11 +20,13 @@
       # languages
       python3
       ruby
+
+      # tailscale
+      tailscale
     ];
     etc = {
       home-manager.source = "${inputs.home-manager}";
       nixpkgs.source = "${pkgs.path}";
-      stable.source = "${inputs.stable}";
     };
     # list of acceptable shells in /etc/shells
     shells = with pkgs; [ bash zsh fish ];
