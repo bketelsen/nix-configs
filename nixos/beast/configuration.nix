@@ -18,17 +18,15 @@
     # You can also split up your configuration and import pieces of it here.
   ];
 
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
-
-
-
-  # FIXME: Add the rest of your current configuration
-
-  # TODO: Set your hostname
-  networking.hostName = "your-hostname";
-
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
-  boot.loader.systemd-boot.enable = true;
+  networking.hostName = "beast"; # Define your hostname.
+  networking.hostId = "086a80a5";
+  # file systems
+  
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
@@ -44,8 +42,10 @@
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = [ "wheel" ];
+      shell = pkgs.zsh;
     };
   };
+  users.users.root.initialHashedPassword = "$6$o7Gbl6VwKt9Fzssj$mfBuXPilRBrvh4.A3c5Uj1XVd1eFF13KOleZwTo0fdmiUjWrplORTgeCboV26nPar8/B2WU0TxirdF/9f54yZ.";
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
