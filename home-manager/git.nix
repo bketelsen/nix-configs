@@ -2,6 +2,7 @@
   home.packages = [ pkgs.github-cli pkgs.git-crypt ];
   programs.git = {
     userName = "Brian Ketelsen";
+    userEmail = "bketelsen@gmail.com";
     extraConfig = {
       credential.helper =
         if pkgs.stdenvNoCC.isDarwin then
