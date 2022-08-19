@@ -66,7 +66,7 @@
       homeConfigurations = {
         "bjk@chapterhouse" =
           home-manager.lib.homeManagerConfiguration {
-            pkgs = legacyPackages.x86_64-linux;
+            pkgs = legacyPackages.aarch64-darwin;
             extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
             modules = (builtins.attrValues homeManagerModules) ++ [
               # > Our main home-manager configuration file <
