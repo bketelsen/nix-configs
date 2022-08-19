@@ -27,7 +27,7 @@
 
     in
     {
-     stateVersion = "22.05";
+      stateVersion = "22.05";
       sessionVariables = {
         GPG_TTY = "/dev/ttys000";
         EDITOR = "nvim";
@@ -42,9 +42,8 @@
         "${NODE_GLOBAL}/bin"
         "${config.home.homeDirectory}/.sd"
       ];
-  packages = with pkgs; [
+      packages = with pkgs; [
         age
-        cachix
         comma
         curl
         fd
@@ -85,9 +84,9 @@
         yarn
         yq-go
       ];
-  };
+    };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
- 
+
 
 }
