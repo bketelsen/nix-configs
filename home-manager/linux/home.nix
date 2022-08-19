@@ -6,7 +6,10 @@
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
     ../common.nix
-
+    ../cli
+    ../dotfiles
+    ../git.nix
+    ../1password
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
