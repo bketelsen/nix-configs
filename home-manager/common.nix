@@ -20,8 +20,73 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+  home =
+    let
+      NODE_GLOBAL = "${config.home.homeDirectory}/.node-packages";
+      SD_GLOBAL = "${config.home.homeDirectory}/.sd";
 
+    in
+    {
+      sessionVariables = {
+        GPG_TTY = "/dev/ttys000";
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+        CLICOLOR = 1;
+        LSCOLORS = "ExFxBxDxCxegedabagacad";
+        NODE_PATH = "${NODE_GLOBAL}/lib";
+        # HOMEBREW_NO_AUTO_UPDATE = 1;
+      };
+      sessionPath = [
+        "${config.home.homeDirectory}/bin"
+        "${NODE_GLOBAL}/bin"
+        "${config.home.homeDirectory}/.sd"
+      ];
+  packages = with pkgs; [
+        age
+        cachix
+        comma
+        curl
+        fd
+        ffmpeg
+        gawk
+        git
+        gnugrep
+        gnupg
+        gnused
+        google-cloud-sdk
+        helmfile
+        htop
+        httpie
+        jq
+        kubectl
+        kubernetes-helm
+        luajit
+        mmv
+        neovim
+        nix
+        nixfmt
+        nixpkgs-fmt
+        nodejs_latest
+        openssh
+        pandoc
+        parallel
+        pkgs.coreutils-full
+        pre-commit
+        neofetch
+        nix-prefetch
+        rclone
+        ripgrep
+        rsync
+        shellcheck
+        stylua
+        terraform
+        treefmt
+        yarn
+        yq-go
+      ];
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";
+
 }
