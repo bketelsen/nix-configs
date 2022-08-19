@@ -5,7 +5,7 @@
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
-    ../../common.nix
+    ../common.nix
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
