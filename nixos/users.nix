@@ -4,6 +4,8 @@
     defaultUserShell = pkgs.zsh;
     mutableUsers = false;
     users = {
+        root.initialHashedPassword = "$6$o7Gbl6VwKt9Fzssj$mfBuXPilRBrvh4.A3c5Uj1XVd1eFF13KOleZwTo0fdmiUjWrplORTgeCboV26nPar8/B2WU0TxirdF/9f54yZ.";
+
       "bjk" = {
         isNormalUser = true;
         home = "${
@@ -18,6 +20,5 @@
     };
   };
 
-  users.root.initialHashedPassword = "$6$o7Gbl6VwKt9Fzssj$mfBuXPilRBrvh4.A3c5Uj1XVd1eFF13KOleZwTo0fdmiUjWrplORTgeCboV26nPar8/B2WU0TxirdF/9f54yZ.";
 
 }

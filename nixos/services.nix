@@ -3,17 +3,17 @@
 
   services.syncthing = {
     enable = true;
-    user = config.user.name;
+    user = "bjk";
     group = "users";
     openDefaultPorts = true;
-    dataDir = config.user.home;
+    dataDir = "/home/bjk";
     guiAddress = "0.0.0.0:8384";
   };
 
 
   #environment.systemPackages = with pkgs; [ vscode firefox gnome.gnome-tweaks ];
 
-  hm = { pkgs, ... }: { imports = [ ]; };
+  #hm = { pkgs, ... }: { imports = [ ]; };
 
 
   networking.networkmanager.enable = true;
@@ -47,7 +47,7 @@
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
+  #system.copySystemConfiguration = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
