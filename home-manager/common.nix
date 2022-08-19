@@ -27,6 +27,7 @@
 
     in
     {
+     stateVersion = "22.05";
       sessionVariables = {
         GPG_TTY = "/dev/ttys000";
         EDITOR = "nvim";
@@ -87,6 +88,6 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "22.05";
+ 
 
 }
