@@ -2,9 +2,15 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 
 { inputs, lib, config, pkgs, ... }: {
+
+    imports = [
+    ./services.nix
+    ./users.nix
+
+  ];
   # Remove if you wish to disable unfree packages for your system
-  nixpkgs.config.allowUnfree = true;
- 
+  nixpkgs = { config = import ./config.nix; };
+
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
