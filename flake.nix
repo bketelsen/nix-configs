@@ -27,7 +27,8 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
-    in rec {
+    in
+    rec {
       # Your custom packages and modifications
       overlays = { default = import ./overlay { inherit inputs; }; };
 
@@ -52,17 +53,21 @@
           overlays = builtins.attrValues overlays;
         });
 
-      nixosConfigurations = {
-        beast = nixpkgs.lib.nixosSystem {
-          pkgs = legacyPackages.x86_64-linux;
-          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = (builtins.attrValues nixosModules) ++ [
-            # > Our main nixos configuration file <
-            ./nixos/beast/configuration.nix
-          ];
-        };
-      };
 
+      nixosConfigurations =
+        let
+          mkHost = system: hostname: nixpkgs.lib.nixosSystem {
+            pkgs = legacyPackages.${system};
+            modules = [
+              ./nixos/${hostname}/configuration.nix
+            ] ++ (builtins.attrValues nixosModules);
+            specialArgs = { inherit inputs; };
+          };
+        in
+        {
+          beast = mkHost "x86_64-linux" "beast";
+          thopter = mkHost "x86-64-linux" "thopter";
+        };
       homeConfigurations = {
         "bjk@chapterhouse" =
           home-manager.lib.homeManagerConfiguration {

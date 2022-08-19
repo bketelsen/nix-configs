@@ -4,8 +4,12 @@
 { inputs, lib, config, pkgs, ... }: {
 
     imports = [
+    # system services
     ./services.nix
+    # system users
     ./users.nix
+    # system packages
+    ./system.nix
 
   ];
   # Remove if you wish to disable unfree packages for your system
