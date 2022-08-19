@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# update & upgrade system
+#
+#	sd system up
+
+
+set -euo pipefail
+
+type apt-get > /dev/null && sudo apt update && sudo apt upgrade
