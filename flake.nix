@@ -53,26 +53,33 @@
         });
 
       nixosConfigurations = {
-        # FIXME replace with your hostname
-        your-hostname = nixpkgs.lib.nixosSystem {
+        beast = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages.x86_64-linux;
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
           modules = (builtins.attrValues nixosModules) ++ [
             # > Our main nixos configuration file <
-            ./nixos/configuration.nix
+            ./nixos/beast/configuration.nix
           ];
         };
       };
 
       homeConfigurations = {
-        # FIXME replace with your username@hostname
-        "your-username@your-hostname" =
+        "bjk@chapterhouse" =
           home-manager.lib.homeManagerConfiguration {
             pkgs = legacyPackages.x86_64-linux;
             extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
             modules = (builtins.attrValues homeManagerModules) ++ [
               # > Our main home-manager configuration file <
-              ./home-manager/home.nix
+              ./home-manager/darwin/home.nix
+            ];
+          };
+        "bjk@beast" =
+          home-manager.lib.homeManagerConfiguration {
+            pkgs = legacyPackages.x86_64-linux;
+            extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+            modules = (builtins.attrValues homeManagerModules) ++ [
+              # > Our main home-manager configuration file <
+              ./home-manager/linux/home.nix
             ];
           };
       };
